@@ -1,5 +1,7 @@
 ##11print("Welcome in our dance academy")
 
+import pandas as pd
+
 class DanceAcademy:
     def __init__(self):
         self.classes = []
@@ -29,6 +31,7 @@ class DanceAcademy:
             elif choice == "2":
                 self.enroll_for_class()
             elif choice == "3":
+                self.save_data_to_excel()  # Save data before exiting
                 print("Thank you for using Dance Academy. Goodbye!")
                 break
             else:
@@ -51,6 +54,20 @@ class DanceAcademy:
                 return
 
         print("Invalid class name. Please try again.")
+
+    def save_data_to_excel(self):
+        data = {'Class': [], 'Student': []}
+
+        for dance_class in self.classes:
+            class_name = dance_class.name
+            students = dance_class.students
+
+            for student in students:
+                data['Class'].append(class_name)
+                data['Student'].append(student)
+
+        df = pd.DataFrame(data)
+        df.to_excel('dance_academy_data.xlsx', index=False)
 
 
 class DanceClass:
@@ -78,5 +95,3 @@ dance_academy.add_class(dance_class3)
 
 # Running the dance academy program
 dance_academy.run()
-
-

@@ -16,7 +16,7 @@ class DanceAcademy:
         dance_class.add_student(student_name)
 
     def display_menu(self):
-        print("Welcome to the Dance Academy!")
+        print("Welcome to my D Dance Academy!")
         print("1. View available classes")
         print("2. Enroll for a class")
         print("3. Exit")
